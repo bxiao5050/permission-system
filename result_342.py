@@ -88,7 +88,7 @@ class Result_342(LabelFrame):
         self.ax.set_xticks([])
         self.ax.set_yticks([])
 
-        self.clicked_xy = (0, 0)
+        self.clicked_xy = (0, 0.0)
         self.plot_clicked = []
 
         self.cid1 = self.canvas.mpl_connect('button_press_event', self.on_click)
