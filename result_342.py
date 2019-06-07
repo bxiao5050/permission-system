@@ -188,7 +188,7 @@ class Result_342(LabelFrame):
         self.plot_clicked.clear()
 
         x, y = self.clicked_xy
-        line, = self.ax.plot(x, y,linestyle='none', marker='s', markeredgecolor="blue",markersize = 7, markerfacecolor='white',markeredgewidth =2)
+        line, = self.ax.plot(x, y,linestyle='none', marker='s', markeredgecolor="blue",markersize = 7, markerfacecolor='white',markeredgewidth =2.0)
         self.plot_clicked.append(line)
         self.canvas.draw()
 
