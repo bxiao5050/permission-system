@@ -72,7 +72,7 @@ class Result_342(LabelFrame):
                 self.v_342 = self.get_default_average_values()
                 # print(self.value)
             elif method == 'radial':
-                self.v_342 = interpolate.griddata((self.x_340, self.y_340), [v for v in self.value.values()], (self.x, self.y), method = 'nearest')
+                self.v_342 = interpolate.griddata((self.x_340, self.y_340), [v for v in self.value.values()], (self.x, self.x), method = 'nearest')
             elif method == 'nearest':
                 rbfi = interpolate.Rbf(self.x_340, self.y_340, [v for v in self.value.values()])
                 self.v_342 = np.round(rbfi(self.x, self.y), 2)
