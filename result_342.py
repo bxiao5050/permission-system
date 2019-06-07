@@ -95,7 +95,7 @@ class Result_342(LabelFrame):
         self.canvas.draw()
         # self.get_default_average_values()
 
-    def on_fig_configuration(self):
+    def on_fig_configuration(self, self.w):
         w = Toplevel()
         w.title('figure for publication')
         data = pd.DataFrame(data = self.v_342)
