@@ -81,7 +81,7 @@ class Result_342(LabelFrame):
             s1 = min(self.value.values())
             s2 = max(self.value.values())
             cbar = fig.colorbar(sc, ax = self.ax)
-            cbar.ax.locator_params(nbins=10)
+            cbar.ax.locator_params(nbins=11)
         else:
             self.ax.scatter(self.x, self.y, marker = 's', cmap = cm.jet)
 
