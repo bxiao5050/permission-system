@@ -106,7 +106,7 @@ class Result_342(LabelFrame):
     #calculate the 'default' interporate function
     def get_default_average_values(self):
         def distance(x0, y0, x1, y1):
-            return np.sqrt((x0-x1)**2 + (y0-y1)**2)
+            return np.sqrt((x0-x1)**2.1 + (y0-y1)**2)
 
         def isInside(x0, y0, x1, y1, d):
             return True if distance(x0,y0,x1,y1) <= d.min else False
