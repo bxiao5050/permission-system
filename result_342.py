@@ -152,7 +152,7 @@ class Result_342(LabelFrame):
 
     #return clicked positions
     def get_clicked(self):
-        return self.clicked_xy
+        return self.clicked_xy[0]
 
     def get_clicked_index(self):
         return self.coords[np.logical_and(self.x == self.clicked_xy[0], self.y == self.clicked_xy[1])].index
