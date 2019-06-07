@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy import signal
+# import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import cm, colors
 from tkinter import *
@@ -82,7 +83,10 @@ class ImportPanel(Frame):
                 filename = os.path.splitext(basename)[0]
                 self.listbox.insert('end', filename)
                 pos = int(filename[-3: ])
-                data = pd.read_csv(path, skiprows = 6)
+                try:
+                    data = pd.read_csv(path, skiprows = 6)
+                except:
+                    pass
 
                 self.pAData[pos] = data
                 self.wafer.pAB.get(pos).config(relief = 'raised', command = lambda pos = pos: self.on_plot(pos))
@@ -95,6 +99,7 @@ class ImportPanel(Frame):
 
 
 def main():
+    # print(matplotlib.__version__)
     with open('qixian.py') as fp:
         lines = fp.readlines()
         for line in lines:

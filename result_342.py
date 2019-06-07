@@ -11,6 +11,7 @@ from matplotlib.figure import Figure
 from tkinter import filedialog
 from scipy import interpolate
 import subprocess
+from publication_notebook import Publication_notebook
 # from matplotlib.widgets import RectangleSelector
 # from sklearn import datasets, linear_model
 #single click
@@ -19,6 +20,7 @@ class Result_342(LabelFrame):
     '''
     def __init__(self, master, value_340 = None, method = None):
         super().__init__(master)
+
         menubar = Menu(self)
 
         docmanu = Menu(menubar)
@@ -27,10 +29,13 @@ class Result_342(LabelFrame):
         menubar.add_cascade(label="Document", menu=docmanu)
         master.config(menu=menubar)
 
-
+        Button(self, text = 'Figure configuration', fg = 'blue', command = self.on_fig_configuration).pack()
 
         self.master = master
-        self.value = dict(sorted(value_340.items()))
+        if value_340 is not None:
+            self.value = dict(sorted(value_340.items()))
+        else:
+            self.value = None
 
 
         self.coords = pd.read_csv('340_342_coords.csv', sep = ';', header = 1)
@@ -53,8 +58,7 @@ class Result_342(LabelFrame):
         self.inf.pack(padx = (15,5))
         self.canvas.get_tk_widget().pack(fill='both', expand=0)
         Button(self, text = 'save as .cvs', fg = 'red', command = self.on_save).pack()
-        # toolbar = NavigationToolbar2Tk(self.canvas, self)
-        # toolbar.update()
+
 
         if self.value is not None:
             self.x_340, self.y_340 = self.coords.iloc[np.array(list(self.value.keys()))-1,3], self.coords.iloc[np.array(list(self.value.keys()))-1,4]
@@ -90,6 +94,14 @@ class Result_342(LabelFrame):
         self.cid1 = self.canvas.mpl_connect('button_press_event', self.on_click)
         self.canvas.draw()
         # self.get_default_average_values()
+
+    def on_fig_configuration(self):
+        w = Toplevel()
+        w.title('figure for publication')
+        data = pd.DataFrame(data = self.v_342)
+        # print(data)
+        Publication_notebook(w, data).pack(fill = 'both', expand = True)
+
 
     #calculate the 'default' interporate function
     def get_default_average_values(self):
