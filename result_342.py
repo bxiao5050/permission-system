@@ -130,7 +130,7 @@ class Result_342(LabelFrame):
                     v.append(self.value.get(pos+1))
                 # print(get_surround_coords(x0, y0).items())
                 if len(v) > 0:
-                    v = round(np.sum(v)/len(v), 2)
+                    v = round(np.sum(v)/len(v), 3)
                     aver.append(v)
             return aver
 
