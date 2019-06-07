@@ -109,7 +109,7 @@ class Result_342(LabelFrame):
             return np.sqrt((x0-x1)**2 + (y0-y1)**2)
 
         def isInside(x0, y0, x1, y1, d):
-            return True if distance(x0,y0,x1,y1) <= d else False
+            return True if distance(x0,y0,x1,y1) <= d.min else False
 
         def get_surround_coords(x0, y0):
             surround = {}
