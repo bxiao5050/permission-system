@@ -167,7 +167,7 @@ class Result_342(LabelFrame):
         index_y = np.abs(self.y-ydata) < self.width/2
         click_x = self.x[index_x].iat[0] if len(self.x[index_x]) >0 else None
         click_y = self.y[index_y].iat[0] if len(self.y[index_y]) >0 else None
-        X = np.where(self.x == click_x)[0]
+        X = np.where(self.x == click_x)[1]
         Y =np.where(self.y == click_y)[0]
 
 
