@@ -139,7 +139,7 @@ class Result_342(LabelFrame):
 
     def on_save(self):
         export_file_path = filedialog.asksaveasfilename(defaultextension='.csv')
-        df = pd.Series(self.v_342).to_frame('thickness')
+        df = pd.Series(self.v_342).to_frame('thick')
         df.index +=1
         df.to_csv(export_file_path, sep = ';')
         messagebox.showinfo( message ='file saved!')
