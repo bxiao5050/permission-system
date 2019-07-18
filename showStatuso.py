@@ -13,6 +13,36 @@ class PhaseResultStatus(Frame):
         show 3D bar for status.
         5 levels
     """
+    def on_surface(self, results):
+        if self.cb is not None:
+            self.cb.remove()
+            self.cb = None
+
+        self.ax.clear()
+        x = []
+        y = []
+        dz = []
+        for pos, value in results.items():
+            x.append(self.pALoc.get(pos)[0])
+            y.append(self.pALoc.get(pos)[1])
+            dz.append(value)
+
+
+        # colours = cm.jet(self.normalization(dz))
+        # print(self.normalization(dz))
+        try:
+            self.ax.plot_trisurf(x, y, dz,cmap=cm.jet)
+        except:
+            pass
+        # self.cb = self.fig.colorbar(tt, fraction=0.015)
+        # self.cb.ax.yaxis.set_ticks_position('left')
+        # self.cb.ax.yaxis.set_ticks([min(dz),max(dz)/2, max(dz)])
+        # self.cb.ax.yaxis.set_ticklabels(np.round(np.linspace(min(dz), max(dz), num =6)))
+
+        self.canvas.draw()
+        self.normalizedB.pack()
+        self.originalB.pack()
+        self.trisurfB.pack()
     def __init__(self, master, results):
         super().__init__(master)
         self.data = None
@@ -22,10 +52,9 @@ class PhaseResultStatus(Frame):
         self.normalizedB = Button(self, text = '3D Bar (normalized)',width = 20, command= lambda results=results: self.on_normalized(results))
         self.originalB = Button(self, text = '3D Bar (original)',width = 20, command=lambda results=results:self.on_original(results))
         self.trisurfB = Button(self, text = 'surface',width = 20, command=lambda results=results:self.on_surface(results))
-        self.normalizedB.pack()
-        self.originalB.pack()
-        self.trisurfB.pack()
 
+        self.canvasGeo()
+        self.on_original(results)
         self.fig = Figure(figsize = (10, 5))
         self.canvas = FigureCanvasTkAgg(self.fig, master = self)
         self.ax = self.fig.add_subplot(111, projection='3d')
@@ -36,8 +65,6 @@ class PhaseResultStatus(Frame):
         self.cb = None#colorbar
 
 
-        self.canvasGeo()
-        self.on_original(results)
 
     def on_surface(self, results):
         if self.cb is not None:
