@@ -50,8 +50,7 @@ class PhaseResultStatus(Frame):
         self.pALoc = {} #pos and row, column
 
         self.normalizedB = Button(self, text = '3D Bar (normalized)',width = 20, command= lambda results=results: self.on_normalized(results))
-        self.originalB = Button(self, text = '3D Bar (original)',width = 20, command=lambda results=results:self.on_original(results))
-        self.trisurfB = Button(self, text = 'surface',width = 20, command=lambda results=results:self.on_surface(results))
+
 
         self.canvasGeo()
         self.on_original(results)
