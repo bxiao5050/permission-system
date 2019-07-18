@@ -116,7 +116,7 @@ class PhaseResultStatus(Frame):
 
         z = np.zeros(len(x))
 
-        dx = [0.4 for num in range(len(x))]
+        dx = [0.2 for num in range(len(x))]
         dy = [0.4 for num in range(len(x))]
 
         colours = cm.jet(self.normalization(dz))
