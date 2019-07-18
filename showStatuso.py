@@ -110,8 +110,8 @@ class PhaseResultStatus(Frame):
         y = []
         dz = []
         for pos, value in results.items():
-            x.append(self.pALoc.get(pos)[0])
-            y.append(self.pALoc.get(pos)[1])
+            x.append(self.pALoc.get(pos)[1])
+            y.append(self.pALoc.get(pos)[0])
             dz.append(value)
 
         z = np.zeros(len(x))
