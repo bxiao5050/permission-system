@@ -1,0 +1,25 @@
+.login-page {
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/login-bg.png');
+  text-align: left;
+  position: relative;
+  .login-form {
+    // margin:0 auto;
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFF;
+    .form-header {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .form-footer {
+      text-align: center;
+    }
+  }
+}

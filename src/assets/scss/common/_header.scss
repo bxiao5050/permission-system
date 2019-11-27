@@ -1,0 +1,98 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 45px;
+  background-color: #438EB9;
+  color: #FFF;
+  .sys-info-group {
+    float: left;
+    margin-left: 30px;
+    font-weight: bold;
+    .admin-logo {
+      display: inline-block;
+    }
+    .admin-title {
+      display: inline-block;
+    }
+    .toggle-collage {
+      display: inline-block;
+      width: 40px;
+      background-color: #62A8D1;
+      margin-left: 30px;
+      cursor: pointer;
+      text-align: center;
+      &:hover {
+        background-color: #579ec8;
+      }
+    }
+  }
+  .user-group {
+    float: right; // margin-right: 50px;
+    .list-item {
+      // width: 60px;
+      padding: 0 10px;
+      float: left;
+      border-left: 1px solid #FFF;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      .animate-icon {
+        display: inline-block;
+        font-size: 16px;
+        color: #FFF;
+        text-align: center;
+        width: 20px;
+      }
+      &:hover .animate-icon {
+        animation: vertical 2s 5 ease;
+      }
+      &.exit {
+        background-color: #62A8D1;
+        &:hover {
+          background-color: #579ec8;
+        }
+      } // &:nth-of-type(1) {
+      //   background-color: #555;
+      //   &:hover {
+      //     background-color: #4b4b4b;
+      //   }
+      // }
+      // &:nth-of-type(2) {
+      //   background-color: #892E65;
+      //   &:hover {
+      //     background-color: #762c59;
+      //   }
+      // }
+      // &:nth-of-type(3) {
+      //   background-color: #2E8965;
+      //   border-right: 1px solid #FFF;
+      //   &:hover {
+      //     background-color: #2c7659;
+      //   }
+      // }
+    }
+    .user-info-group {
+      // width: 100px;
+      max-width: 150px;
+      padding: 0 10px;
+      font-size: 16px;
+      float: left;
+      background-color: #62A8D1;
+      cursor: pointer;
+       .animate-icon {
+        display: inline-block;
+        font-size: 16px;
+        color: #FFF;
+        text-align: center;
+        width: 20px;
+      }
+      &:hover .animate-icon {
+        animation: vertical 2s 5 ease;
+      }
+      &:hover {
+        background-color: #579ec8;
+      }
+    }
+  }
+}
