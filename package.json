@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "js-md5": "^0.5.0",
     "vue": "^2.3.3",
     "vue-router": "^2.3.1",
