@@ -91,6 +91,25 @@ class AutoCal():
 
         self.first_click = True
 
+
+    def on_show_results(self, e):
+        w = Toplevel(self.w)
+        w.title(f'extrapolated thickness results from "{self.interp_com.get()}" function')
+        Result_342(w, value_340 = self.results_constrained, method = self.interp_com.get()).pack()
+        # if len(self.results_constrained) == 340:
+        #     w = Toplevel(self.w)
+        #     w.title('extrapolated thickness results')
+        #     Result_342(w, value_340 = self.results_constrained, method = self.interp_com.current()).pack()
+        # else:
+        #     messagebox.showinfo(message = 'need complete 320 data points')
+
+
+
+    def on_closing(self):
+        self.w.withdraw()
+        self.master.destroy()
+
+
     def on_saveProject(self):
         drag_range = {}# save drag parameters
         line_drag = {} #save two baselines
@@ -107,14 +126,17 @@ class AutoCal():
         messagebox.showinfo('save thickness project', 'thickness project saved!')
 
 
-    def on_show_results(self, e):
-        w = Toplevel(self.w)
-        w.title(f'extrapolated thickness results from "{self.interp_com.get()}" function')
-        Result_342(w, value_340 = self.results_constrained, method = self.interp_com.get()).pack()
+    def on_showOverview(self):
+        w = Toplevel()
+        w.title('overview of thickness')
+        show = ShowOverview(w, self.showResult2, self.pAData)
+        w.protocol('WM_DELETE_WINDOW', lambda w=w: show.on_closeAll(w))
 
-    def on_closing(self):
-        self.w.withdraw()
-        self.master.destroy()
+
+    def on_show3D(self):
+        w = Toplevel()
+        w.title('3D view')
+        PhaseResultStatus(w, self.results_constrained).pack(fill = 'both', expand = True)
 
 
 
@@ -147,11 +169,13 @@ class AutoCal():
         #colored buttons
         v = [res for res in self.results.values()]
         LowerBound, UpperBound, Lower, Upper = range_and_boundary
-        try:
-            self.rangeSlider.firstTime(LowerBound, UpperBound, Lower, Upper)
-        except:
-            time.sleep(2)
-            self.rangeSlider.firstTime(LowerBound, UpperBound, Lower, Upper)
+        while True:
+            try:
+                self.rangeSlider.firstTime(LowerBound, UpperBound, Lower, Upper)
+                break
+            except:
+                time.sleep(0.5)
+                # self.rangeSlider.firstTime(LowerBound, UpperBound, Lower, Upper)
 
 
         self.wafer2.showLegend('', np.linspace(min(v), max(v), num =5).astype(int))
@@ -160,18 +184,6 @@ class AutoCal():
             self.wafer2.getPAB().get(pos).config(bg = self.colorChoose(v, x))
             self.wafer2.getPAB().get(pos).mouse_enter(lambda event, pos = pos: self.on_enter(event, pos))
         self.rangeSlider.rs.subscribe(self.slider_changeState)
-
-    def on_showOverview(self):
-        w = Toplevel()
-        w.title('overview of thickness')
-        show = ShowOverview(w, self.showResult2, self.pAData)
-        w.protocol('WM_DELETE_WINDOW', lambda w=w: show.on_closeAll(w))
-
-
-    def on_show3D(self):
-        w = Toplevel()
-        w.title('3D view')
-        PhaseResultStatus(w, self.results_constrained).pack(fill = 'both', expand = True)
 
 
 
@@ -199,8 +211,12 @@ class AutoCal():
         time.sleep(1)
         #colored buttons
         v = [res for res in self.results.values()]
-        time.sleep(2)
-        self.rangeSlider.firstTime(LowerBound=min(v),UpperBound=max(v))
+        while True:
+            try:
+                self.rangeSlider.firstTime(LowerBound=min(v),UpperBound=max(v))
+                break
+            except:
+                time.sleep(0.5)
         self.wafer2.showLegend('', np.linspace(min(v), max(v), num =5).astype(int))
         for pos in self.pAData.keys():
             x = self.results.get(pos)

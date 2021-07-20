@@ -17,6 +17,7 @@ class ShowHist(LabelFrame):
         self.canvas.get_tk_widget().pack(fill = 'both', expand = True)
         # toolbar = NavigationToolbar2Tk(self.canvas, self)
         # toolbar.update()
+
     def update(self, results):
         self.config(text = f'distribution for all {len(results)}')
         self.ax.clear()
@@ -32,21 +33,6 @@ class ShowHist(LabelFrame):
 
         # self.ax.set_title(f'Thickness distribution for all {len(results)}')
         self.canvas.draw()
-    # def update(self, results):
-    #     self.config(text = f'distribution for all {len(results)}')
-    #     self.ax.clear()
-
-    #     values = [v for v in results.values()]
-
-    #     self.ax.grid(zorder=0)
-    #     n, bins, patches=self.ax.hist(x = values, facecolor='green', alpha=0.5, rwidth=0.85)
-    #     self.ax.set_xlabel('thickness')
-    #     self.ax.set_ylabel('numbers')
-    #     start, end = self.ax.get_ylim()
-    #     self.ax.yaxis.set_ticks(np.round(np.linspace(start, end, num=10)))
-
-    #     # self.ax.set_title(f'Thickness distribution for all {len(results)}')
-    #     self.canvas.draw()
 
 
 def main():

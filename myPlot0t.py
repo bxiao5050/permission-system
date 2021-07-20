@@ -80,12 +80,7 @@ class MyPlot(LabelFrame):
         except:
             return
 
-    #clear the axis
-    def axClear(self, ax):
-        for artist in ax.lines + ax.patches:
-            artist.remove()
-            del artist
-        ax.clear()
+
 
     def setParameters(self, drag_h1 = None,drag_l = None,drag_h2 = None):
         #baseline parameter
@@ -99,6 +94,12 @@ class MyPlot(LabelFrame):
     def getPara(self):
         return {'drag_h1':self.drag_h1,'drag_l':self.drag_l,'drag_h2':self.drag_h2}
 
+    #clear the axis
+    def axClear(self, ax):
+        for artist in ax.lines + ax.patches:
+            artist.remove()
+            del artist
+        ax.clear()
 
 
 
@@ -132,14 +133,24 @@ class MyPlot(LabelFrame):
 
         self.canvas.draw()
 
+    def get_all_range(self):
+        return [self.drag_h1.getRangeV()[0], self.drag_h1.getRangeV()[1], self.drag_l.getRangeV()[0], self.drag_l.getRangeV()[1], self.drag_h2.getRangeV()[0], self.drag_h2.getRangeV()[1]]
+
     def get_line_drag(self):
         return self.linedrag.getRangeV()
 
     def on_OK(self):
         self.updateAx_middle()
-    def get_all_range(self):
-        return [self.drag_h1.getRangeV()[0], self.drag_h1.getRangeV()[1], self.drag_l.getRangeV()[0], self.drag_l.getRangeV()[1], self.drag_h2.getRangeV()[0], self.drag_h2.getRangeV()[1]]
-        
+
+
+    def updateAx_middle(self):
+        self.axClear(self.ax_middle)
+        #get data from upper ax
+        line = self.ax_up.lines[0]
+        x, y = line.get_xdata(), line.get_ydata()
+        self.calAndDrawAx_middle(x,y)
+
+
     def calAndDrawAx_middle(self, x,y):
         self.thickness, x_flat, y_flat, yHigh, yLow = [v for v in self.calThickness(x, y).values()]
         self.refresh_middleAx(x, y, x_flat, y_flat, yHigh, yLow)
