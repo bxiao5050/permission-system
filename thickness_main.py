@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy import signal
+# import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import cm, colors
 from tkinter import *
@@ -95,6 +96,7 @@ class ImportPanel(Frame):
 
 
 def main():
+    # print(matplotlib.__version__)
     with open('qixian.py') as fp:
         lines = fp.readlines()
         for line in lines:

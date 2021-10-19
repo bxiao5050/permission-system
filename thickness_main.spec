@@ -1,10 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+
 block_cipher = None
 
 
 a = Analysis(['thickness_main.py'],
-             pathex=['C:\\Users\\AI-PC2\\Dropbox\\PythonProgram\\thickness\\v 1.08'],
+             pathex=['C:\\Users\\AI-PC2\\Dropbox\\PythonProgram\\tools\\v1.04\\thickness'],
              binaries=[],
              datas=[],
              hiddenimports=[],

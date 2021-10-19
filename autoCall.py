@@ -47,7 +47,7 @@ class AutoCal():
         Button(waferFrame, text = 'overview', command = self.on_showOverview).grid(row = 0, column = 1, sticky = 'nw', pady=(12,0))
         # Button(waferFrame, text = 'results', fg = 'red', command = self.on_show_results).grid(row = 0, column = 2, sticky = 'nw', pady=(12,0))
         com_l = LabelFrame(waferFrame, text = 'interpolate'+'\n'+ 'to 342 MAs', fg = 'blue')
-        self.interp_com = ttk.Combobox(com_l, values = ['default', 'nearest'], width = '7')
+        self.interp_com = ttk.Combobox(com_l, values = ['default', 'radial','nearest'], width = '7')
         self.interp_com.bind('<<ComboboxSelected>>', self.on_show_results)
         self.interp_com.pack()
 

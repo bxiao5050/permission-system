@@ -193,7 +193,7 @@ class MyPlot(LabelFrame):
             try:
                 yhat = savgol_filter(y, 99, 1)
             except:
-                yhat = savgol_filter(y, 51, 3)
+                yhat = savgol_filter(y, 5, 3)
             index = int(len(x)/2)
             return x[index], yhat[index]
 
