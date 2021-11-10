@@ -72,21 +72,21 @@ class ShowOverview(WaferCanvas):
             x, y = self.pAData.get(pos).iloc[:,0], self.pAData.get(pos).iloc[:,1]
 
             self.canvas_ax_up.plot(x, y)
-            # thickness, y_flat, yHigh, yLow = [v for v in Myplot.calThickness(x, y).values()]
+            thickness, y_flat, yHigh, yLow = [v for v in Myplot.calThickness(x, y).values()]
 
-            # ymin, ymax = min(y_flat), max(y_flat)
-            # self.canvas_ax_middle.set_ylim(ymin, ymax)
+            ymin, ymax = min(y_flat), max(y_flat)
+            self.canvas_ax_middle.set_ylim(ymin, ymax)
 
-            # self.canvas_ax_middle.bar((Myplot.drag_h1.getRangeV()[0]+Myplot.drag_h1.getRangeV()[1])/2,  color = 'blue',height = abs(ymax-ymin),bottom = ymin, width = Myplot.drag_h1.getRangeV()[1] - Myplot.drag_h1.getRangeV()[0], alpha = 0.1)
-            # self.canvas_ax_middle.bar((Myplot.drag_l.getRangeV()[0]+Myplot.drag_l.getRangeV()[1])/2,  color = 'orange',height = abs(ymax-ymin),bottom = ymin, width = Myplot.drag_l.getRangeV()[1] - Myplot.drag_l.getRangeV()[0], alpha = 0.1)
-            # self.canvas_ax_middle.bar((Myplot.drag_h2.getRangeV()[0]+Myplot.drag_h2.getRangeV()[1])/2,  color = 'blue',height = abs(ymax-ymin),bottom = ymin, width = Myplot.drag_h2.getRangeV()[1] - Myplot.drag_h2.getRangeV()[0], alpha = 0.1)
+            self.canvas_ax_middle.bar((Myplot.drag_h1.getRangeV()[0]+Myplot.drag_h1.getRangeV()[1])/2,  color = 'blue',height = abs(ymax-ymin),bottom = ymin, width = Myplot.drag_h1.getRangeV()[1] - Myplot.drag_h1.getRangeV()[0], alpha = 0.1)
+            self.canvas_ax_middle.bar((Myplot.drag_l.getRangeV()[0]+Myplot.drag_l.getRangeV()[1])/2,  color = 'orange',height = abs(ymax-ymin),bottom = ymin, width = Myplot.drag_l.getRangeV()[1] - Myplot.drag_l.getRangeV()[0], alpha = 0.1)
+            self.canvas_ax_middle.bar((Myplot.drag_h2.getRangeV()[0]+Myplot.drag_h2.getRangeV()[1])/2,  color = 'blue',height = abs(ymax-ymin),bottom = ymin, width = Myplot.drag_h2.getRangeV()[1] - Myplot.drag_h2.getRangeV()[0], alpha = 0.1)
 
-            # yHigh, yLow = Myplot.linedrag.getRangeV()[1], Myplot.linedrag.getRangeV()[0]
-            # self.canvas_ax_middle.hlines([yHigh, yLow], min(x), max(x), colors = 'red', linestyles = '--', label = 'fitted baselines')
-            # self.canvas_ax_middle.annotate('', (max(x)/10, yLow), (max(x)/10, yHigh), arrowprops={'arrowstyle':'<->'})
-            # self.canvas_ax_middle.text(max(x)/9, (yHigh + yLow)/2, f'h = {np.round(abs(yHigh-yLow),2)}')
-            # self.canvas_ax_middle.plot(x,y_flat, label = 'flat')
-            # self.canvas_ax_middle.legend(ncol = 1, loc = 'lower right')
+            yHigh, yLow = Myplot.linedrag.getRangeV()[1], Myplot.linedrag.getRangeV()[0]
+            self.canvas_ax_middle.hlines([yHigh, yLow], min(x), max(x), colors = 'red', linestyles = '--', label = 'fitted baselines')
+            self.canvas_ax_middle.annotate('', (max(x)/10, yLow), (max(x)/10, yHigh), arrowprops={'arrowstyle':'<->'})
+            self.canvas_ax_middle.text(max(x)/9, (yHigh + yLow)/2, f'h = {np.round(abs(yHigh-yLow),2)}')
+            self.canvas_ax_middle.plot(x,y_flat, label = 'flat')
+            self.canvas_ax_middle.legend(ncol = 1, loc = 'lower right')
 
             self.canvas.draw()
         except :
