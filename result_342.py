@@ -23,30 +23,6 @@ class Result_342(LabelFrame):
 
         menubar = Menu(self)
 
-        if self.value is not None:
-            self.x_340, self.y_340 = self.coords.iloc[np.array(list(self.value.keys()))-1,3], self.coords.iloc[np.array(list(self.value.keys()))-1,4]
-
-            # print(self.value)
-            if method == 'default':
-                if len(self.value) != 340:
-                    messagebox.showinfo(message = f'need 340 experiment points in order to use this function. There are only {len(self.value)} points now')
-                    master.destroy()
-                    return
-                self.v_342 = self.get_default_average_values()
-                # print(self.value)
-            elif method == 'radial':
-                self.v_342 = interpolate.griddata((self.x_340, self.y_340), [v for v in self.value.values()], (self.x, self.y), method = 'nearest')
-            elif method == 'nearest':
-                rbfi = interpolate.Rbf(self.x_340, self.y_340, [v for v in self.value.values()])
-                self.v_342 = np.round(rbfi(self.x, self.y), 2)
-            # print(self.v_342)
-            sc = self.ax.scatter(self.x, self.y, c = self.v_342, marker = 's', s = 50, cmap = cm.jet)
-            s1 = min(self.value.values())
-            s2 = max(self.value.values())
-            cbar = fig.colorbar(sc, ax = self.ax)
-            cbar.ax.locator_params(nbins=10)
-        else:
-            self.ax.scatter(self.x, self.y, marker = 's', cmap = cm.jet)
         docmanu = Menu(menubar)
         docmanu.add_command(label="wafer figure", command=self.on_wafer_figure)
         docmanu.add_command(label="interpolation algorithm", command=self.on_interpolation_algothrim)
@@ -168,21 +144,6 @@ class Result_342(LabelFrame):
         df.index +=1
         df.to_csv(export_file_path, sep = ';')
         messagebox.showinfo( message ='file saved!')
-        
-        def average():
-
-            aver = []
-
-            for x0, y0 in zip(self.x, self.y):
-                # print((x0, y0))
-                v = []
-                for pos, (x1, y1) in get_surround_coords(x0, y0).items():
-                    v.append(self.value.get(pos+1))
-                # print(get_surround_coords(x0, y0).items())
-                if len(v) > 0:
-                    v = round(np.sum(v)/len(v), 2)
-                    aver.append(v)
-            return aver
 
     def on_wafer_figure(self):
         subprocess.Popen('340-342_thickness.pdf',shell=True)
