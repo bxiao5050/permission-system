@@ -2,7 +2,7 @@
 calculate and adjust each measure area's thickness 
 
 <p align="center">
-    <a href="https://ruhr-uni-bochum.sciebo.de/s/CQGUzLVrRwnr6TE" target="_blank">
+    <a href="https://ruhr-uni-bochum.sciebo.de/s/X2QkYdlPqSIsgFH" target="_blank">
         <img align="center" width = "200" alt="download" src="/assets/download_logo1.png"/>
     </a>
 </p>
@@ -26,7 +26,7 @@ displayed.
     <p align = "center">Main windows of the programs</p><br>
   <img align = "center" width = "600" src = "/assets/image2.png"/>
     <p align = "center">Workflow to setup the automated phase identification program</p><br>
-  <img align = "center" width = "600" src = "/assets/image3.png"/>
+  <img align = "center" width = "600" src = "/assets/image3.gif"/>
     <p align = "center">View of the search and match result from a measurement area</p><br>
 </div>
 
